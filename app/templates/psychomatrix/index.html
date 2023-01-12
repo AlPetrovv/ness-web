@@ -1,0 +1,20 @@
+{% extends "psychomatrix/base.html" %}
+
+{% block header %}
+<style>
+        body {
+            margin: 0 auto;
+            text-align: center;
+        }
+</style>
+{% endblock %}
+
+{% block content %}
+<h2>Квадрат Пифагора</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    <p>Выберите дату рождения</p>
+    {{ form.as_div }}
+    <input type="submit" value="Рассчитать дату рождения" style="padding: 5px; margin: 15px;"/>
+</form>
+{% endblock %}
