@@ -2,8 +2,8 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 
-IMAGE: str = f'{BASE_DIR}/data/img/image.jpg'
-FONT: str = f'{BASE_DIR}/data/font/Montserrat-Medium.ttf'
+# IMAGE: str = f'{BASE_DIR}/data/img/image.jpg'
+# FONT: str = f'{BASE_DIR}/data/font/Montserrat-Medium.ttf'
 
 ANCHOR: str = 'mb'
 

@@ -1,8 +1,8 @@
 from django.urls import path, re_path
 
-from . import views
+from .views import SquareOfPythagorasViewSet
 
 urlpatterns = [
-    path('', views.index),
-    re_path(r'^(?P<date>\d{4}-\d{2}-\d{2})$', views.index, name='date'),
+    path('api/', SquareOfPythagorasViewSet.as_view({'post': 'create'})),
+    # re_path(r'^(?P<date>\d{4}-\d{2}-\d{2})$', views.index, name='date'),
 ]

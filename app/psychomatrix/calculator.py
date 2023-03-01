@@ -1,5 +1,7 @@
 from datetime import datetime
 
+from .models import PsychomatrixBaseContent, PsychomatrixAdditionalContent
+
 
 class Calculator:
 
@@ -78,3 +80,27 @@ class Calculator:
         ['1111', '-', '33', '4', '-', '66', '-', '88', '999', '6', '3', '5', '2', '5', '2', '7', '7']
         """
         return self.get_numbers() + self.get_additional_numbers()
+
+
+def get_contents(numbers: list) -> tuple[list, list]:
+    basic_codes = [
+        f'{enum}-нет' if num == '-' else num for enum, num in
+        enumerate(numbers[:9], start=1)
+    ]
+    additional_codes = [
+        f'{enum}-0' if num == '-' else f'{enum}-{num}'
+        if enum not in [8, 3] else f'{enum}-'
+        for enum, num in
+        enumerate(numbers[9:], start=1)
+    ]
+
+    basic_contents = PsychomatrixBaseContent.objects.filter(
+        code__in=basic_codes
+    )
+    additional_codes = PsychomatrixAdditionalContent.objects.filter(
+        code__in=additional_codes
+    )
+    basic = [{'name': item.title, 'number': item.code, 'description': item.text} for item in basic_contents]
+    additional = [{'name': item.title, 'number': item.code, 'description': item.text} for item in additional_codes]
+
+    return basic, additional

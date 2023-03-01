@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-s2mcr0d=c_p5ip#0p4+5rw1ed6i2^@#+0hiq*+-fsm(i5g#7b1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['numerology.nesss.site']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -35,9 +35,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'rest_framework',
     'main',
     'psychomatrix',
+    'celebrities'
+]
+
+REST_FRAMEWORK = {
+    'DATE_INPUT_FORMATS': ["%d.%m.%Y", ],
+    'DATETIME_FORMAT': '%d.%m.%Y %H',
+    'DATE_FORMAT': '%d.%m.%Y %H'
+}
+DATE_INPUT_FORMATS = [
+    ("%d.%m.%Y"),
 ]
 
 MIDDLEWARE = [
